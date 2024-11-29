@@ -4,7 +4,7 @@ import api from '../api.js';
 
 export default {
   setup() {
-    let usuarios = null;
+    const usuarios = ref([]);
 
     onMounted(async () => { //uma função que ocorre no carregamento da tela, nela estou fazendo uma requisição pro back na rota /users
       const response = await api.get('/users');
