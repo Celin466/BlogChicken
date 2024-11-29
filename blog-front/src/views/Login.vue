@@ -8,7 +8,7 @@ export default {
 
     onMounted(async () => { //uma função que ocorre no carregamento da tela, nela estou fazendo uma requisição pro back na rota /users
       const response = await api.get('/users');
-      usuarios = response.data;
+      usuarios.value = response.data;
       console.log(usuarios);
     });
 
