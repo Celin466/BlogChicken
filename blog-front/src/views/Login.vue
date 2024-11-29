@@ -4,23 +4,24 @@ import api from '../api.js';
 
 export default {
   setup() {
-    const posts = ref([]);
+    let usuarios = null;
 
-    onMounted(async () => {
+    onMounted(async () => { //uma função que ocorre no carregamento da tela, nela estou fazendo uma requisição pro back na rota /users
       const response = await api.get('/users');
-      posts.value = response.data;
+      usuarios = response.data;
+      console.log(usuarios);
     });
 
-    return { posts };
+    return { usuarios };
   },
 };
 </script>
 
 <template>
   <div>
-    <h1>Posts do Blog</h1>
+    <h1>Usuario</h1>
     <ul>
-      <!-- <li v-for="post in posts" :key="post.id">{{ post.title }}</li> -->
+      <li v-for="usuario in usuarios" :key="usuario.id">{{ usuario.nome }}</li>
     </ul>
   </div>
 </template>
