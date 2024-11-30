@@ -7,27 +7,27 @@ import { postagem } from './postagem.entity';
 export class postagemService {
   constructor(
     @InjectRepository(postagem)
-    private readonly userRepository: Repository<postagem>,
+    private readonly postRepository: Repository<postagem>,
   ) { }
 
   findAll(): Promise<postagem[]> {
-    return this.userRepository.find();
+    return this.postRepository.find();
   }
 
   findOne(id: number): Promise<postagem> {
-    return this.userRepository.findOneBy({ id });
+    return this.postRepository.findOneBy({ id });
   }
 
-  create(user: postagem): Promise<postagem> {
-    return this.userRepository.save(user);
+  create(post: postagem): Promise<postagem> {
+    return this.postRepository.save(post);
   }
 
   async update(id: number, user: postagem): Promise<postagem> {
-    await this.userRepository.update(id, user);
+    await this.postRepository.update(id, user);
     return this.findOne(id);
   }
 
   delete(id: number): Promise<void> {
-    return this.userRepository.delete(id).then(() => undefined);
+    return this.postRepository.delete(id).then(() => undefined);
   }
 }
