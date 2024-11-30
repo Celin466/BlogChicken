@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 import { useField, useForm } from 'vee-validate';
 import * as yup from 'yup';
 import api from '../api.js';
+
 
 // Configuração do formulário e validação
 const { handleSubmit, resetForm } = useForm();
@@ -42,7 +42,7 @@ const onSubmit = handleSubmit(async (values) => { //essa é a função de envio 
 </script>
 
 <template>
-  <div class="register-container">
+  <div class="register-container center">
     <h1>Registro de Usuário</h1>
     <form @submit.prevent="onSubmit" class="register-form">
       <div class="form-group">
@@ -66,11 +66,23 @@ const onSubmit = handleSubmit(async (values) => { //essa é a função de envio 
       <button type="submit" :disabled="isSubmitting">
         {{ isSubmitting ? 'Registrando...' : 'Registrar' }}
       </button>
+
     </form>
   </div>
 </template>
 
 <style scoped>
+html,
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .register-container {
   max-width: 400px;
   margin: 0 auto;
@@ -108,7 +120,7 @@ const onSubmit = handleSubmit(async (values) => { //essa é a função de envio 
   padding: 10px;
   font-size: 16px;
   background-color: #007bff;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 4px;
   cursor: pointer;
