@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
-
+import { PostagemModule } from './Postagem/postagem.module'
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,9 +17,9 @@ import { UserModule } from './user/user.module';
       entities: [User],
       synchronize: true,
     }),
-    UserModule,
+    UserModule, PostagemModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
